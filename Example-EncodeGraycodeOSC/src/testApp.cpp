@@ -2,11 +2,12 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	payload.init(1024, 768);
+	payload = make_shared<ofxGraycode::Payload::Graycode>();
+	payload->init(2048, 2048);
 	encoder.init(payload);
 
 	//set the oF window size to match the payload size
-	ofSetWindowShape(payload.getWidth(), payload.getHeight());
+	ofSetWindowShape(payload->getWidth(), payload->getHeight());
 
 	//connect to server
 	client.setup("localhost", SERVER_PORT);

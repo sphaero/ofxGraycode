@@ -4,7 +4,8 @@
 void testApp::setup(){
 	ofSetWindowShape(1024, 512);
 	
-	payload.init(512, 512);
+    payload = make_shared<ofxGraycode::Payload::Graycode>();
+    payload->init(512, 512);
 	encoder.init(payload);
 	decoder.init(payload);
 }
@@ -19,7 +20,7 @@ void testApp::draw(){
 	message.draw(0, 0);
 	decoder.draw(512, 0);
 
-	ofDrawBitmapString("Press any key to step through encoder frames one by one", 20, 20);
+    ofDrawBitmapString("Press any key to step through encoder frames one by one", 20, 20);
 }
 
 //--------------------------------------------------------------

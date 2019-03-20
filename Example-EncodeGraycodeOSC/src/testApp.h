@@ -26,7 +26,7 @@ public:
 	void gotMessage(ofMessage msg);
 
 	ofImage output;
-	PayloadGraycode payload;
+	shared_ptr<Payload::Graycode> payload;
 	Encoder encoder;
 	ofxOscSender client;
 };

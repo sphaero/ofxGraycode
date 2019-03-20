@@ -22,7 +22,7 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	PayloadGraycode payload;
+    std::shared_ptr<Payload::Graycode> payload;
 	Encoder encoder;
 	Decoder decoder;
 	ofImage message;
