@@ -247,7 +247,7 @@ namespace ofxGraycode {
 		cameraInProjector.allocate(data.getPayloadWidth(), data.getPayloadHeight(), OF_IMAGE_COLOR);
 		memset(cameraInProjector.getPixels().getPixels(), 0, cameraInProjector.getPixels().size());
 
-		uint8_t* camPix = projectorInCamera.getPixels();
+		uint8_t* camPix = (uint8_t*)projectorInCamera.getPixels().getData();
 		uint8_t* active = (uint8_t*)data.getActive().getPixels();
 		uint32_t threshold = (uint32_t)data.getDistanceThreshold();
 
@@ -263,8 +263,8 @@ namespace ofxGraycode {
 				camPix += 3;
 		}
 
-		uint8_t* projPixels = cameraInProjector.getPixels();
-		uint32_t* dataInverse = this->data.getDataInverse().getPixels();
+		uint8_t* projPixels = (uint8_t*)(cameraInProjector.getPixels().getData());
+		uint32_t* dataInverse = (uint32_t*)this->data.getDataInverse().getPixels();
 		float cameraWidth = this->getWidth();
 		float cameraHeight = this->getHeight();
 		for (uint32_t i = 0; i < this->payload->getSize(); i++, projPixels += 3, dataInverse++) {

@@ -23,6 +23,7 @@ public:
 	void gotMessage(ofMessage msg);
 
 	ofImage output;
-	PayloadGraycode payload;
+	//Payload::Graycode payload;
+	std::shared_ptr<ofxGraycode::Payload::Base>	payload;
 	Encoder encoder;
 };

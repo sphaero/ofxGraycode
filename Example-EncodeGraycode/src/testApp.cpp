@@ -6,7 +6,9 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	
 	//initialise everything
-	payload.init(1280, 1024);
+    //auto p = ofxGraycode::Payload::Graycode();
+    payload = make_shared<ofxGraycode::Payload::Graycode>();
+    payload->init(1920, 1080);
 	encoder.init(payload);
 
 	//load first frame

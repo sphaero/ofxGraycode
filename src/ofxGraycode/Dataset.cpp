@@ -1,4 +1,4 @@
-#include "DataSet.h"
+#include "Dataset.h"
 
 // Bit patterns for when saving
 #define OFXGRAYCODE_DATASET_HAS_DATA 1 << 0
