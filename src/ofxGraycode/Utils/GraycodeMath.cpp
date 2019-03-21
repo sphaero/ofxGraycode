@@ -1,4 +1,4 @@
-#include "Math.h"
+#include "GraycodeMath.h"
 
 namespace ofxGraycode {
 	namespace Utils {

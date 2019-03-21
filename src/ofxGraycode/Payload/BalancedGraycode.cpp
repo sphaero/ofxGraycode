@@ -1,6 +1,6 @@
 #include "BalancedGraycode.h"
 #include "../Dataset.h"
-#include "../Utils/Math.h"
+#include "../Utils/GraycodeMath.h"
 
 namespace ofxGraycode {
 	namespace Payload {
