@@ -29,4 +29,5 @@ public:
 	shared_ptr<Payload::Graycode> payload;
 	Encoder encoder;
 	ofxOscSender client;
+	ofxOscReceiver receiver;
 };

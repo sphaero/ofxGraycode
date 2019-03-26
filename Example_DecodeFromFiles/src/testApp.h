@@ -21,7 +21,7 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		ofxGraycode::Decoder decoder;
-		ofxGraycode::PayloadGraycode payload;
+		std::shared_ptr<ofxGraycode::Payload::Graycode> payload;
 	
 		enum State  {
 			StateViewCamera = 0,

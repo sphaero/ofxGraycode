@@ -2,8 +2,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	payload = make_shared<ofxGraycode::Payload::Graycode>();
-	payload->init(2048, 2048);
+	ofSetBackgroundColor(0);
+	ofSetWindowPosition(2049,0);
+        payload = make_shared<ofxGraycode::Payload::Graycode>();
+        payload->init(4096,1024);
 	encoder.init(payload);
 
 	//set the oF window size to match the payload size
@@ -11,14 +13,29 @@ void testApp::setup(){
 
 	//connect to server
 	client.setup("localhost", SERVER_PORT);
-
+	receiver.setup( 4321 );
 	//show first message
 	encoder >> output;
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-
+	while( receiver.hasWaitingMessages() )
+	{
+		// get the next message
+		ofxOscMessage m;
+		receiver.getNextMessage( &m );
+		if ( strcmp( m.getAddress().c_str(), "/reset" ) == 0 )
+		{
+			encoder.reset();
+			encoder >> output;
+		}
+		else
+		{
+			if (!(encoder >> output)) //returns false if no remaining frames
+		                ofLogNotice() << "End of frames";
+		}
+	}
 }
 
 //--------------------------------------------------------------

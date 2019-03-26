@@ -2,7 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	payload.init(1920, 1080);
+	payload = make_shared<ofxGraycode::Payload::Graycode>();
+	payload->init(2048, 2048);
 	decoder.init(payload);
 	
 	string path = ofSystemLoadDialog("Select folder of images", true, ofToDataPath("")).getPath();
@@ -49,7 +50,7 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
 	switch (key) {
 		case ' ':
-			state++;
+			state = (State)((int)state + 1);
 			if (state == StateEnd) {
 				state = StateViewCamera;
 			}
